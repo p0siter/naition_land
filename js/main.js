@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(data.error || 'Не удалось отправить заявку.');
             }
 
+            if (typeof window.ym === 'function') {
+                window.ym(110922170, 'reachGoal', 'ym-register');
+            }
+
             if (message) {
                 message.textContent = 'Заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.';
                 message.className = 'form-message success';
