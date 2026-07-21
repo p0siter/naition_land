@@ -1,0 +1,4 @@
+data/app.db
+.git
+.DS_Store
+*.md
