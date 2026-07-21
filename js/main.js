@@ -3,9 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registration-form');
     const message = document.getElementById('form-message');
     const registerButtons = document.querySelectorAll('.btn-register');
+    let selectedTariff = 'direct';
+    let formStarted = false;
+
+    const reachMetrikaGoal = (goal, params = {}) => {
+        if (typeof window.ym === 'function') {
+            window.ym(110922170, 'reachGoal', goal, params);
+        }
+    };
 
     registerButtons.forEach((button) => {
         button.addEventListener('click', () => {
+            selectedTariff = button.dataset.tariff || 'unknown';
+            reachMetrikaGoal('ym-open-leadform', { tariff: selectedTariff });
+
             if (!registrationSection) {
                 return;
             }
@@ -17,6 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!form) {
         return;
     }
+
+    form.addEventListener('focusin', () => {
+        if (formStarted) {
+            return;
+        }
+
+        formStarted = true;
+        reachMetrikaGoal('ym-form-start', { tariff: selectedTariff });
+    });
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -45,9 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(data.error || 'Не удалось отправить заявку.');
             }
 
-            if (typeof window.ym === 'function') {
-                window.ym(110922170, 'reachGoal', 'ym-register');
-            }
+            reachMetrikaGoal('ym-submit-leadform', { tariff: selectedTariff });
 
             if (message) {
                 message.textContent = 'Заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.';

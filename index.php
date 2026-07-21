@@ -4,11 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Первая помощь: практический курс для каждого</title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110922170', 'ym');
+
+        (function() {
+            var storageKey = 'naition_ym_internal';
+            var internalTraffic = false;
+            var url = new URL(window.location.href);
+            var internalMode = url.searchParams.get('ym_internal');
+
+            try {
+                if (internalMode === '1') {
+                    window.localStorage.setItem(storageKey, '1');
+                } else if (internalMode === '0') {
+                    window.localStorage.removeItem(storageKey);
+                }
+
+                internalTraffic = window.localStorage.getItem(storageKey) === '1';
+            } catch (error) {
+                internalTraffic = internalMode === '1';
+            }
+
+            if (internalMode !== null) {
+                url.searchParams.delete('ym_internal');
+                window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+            }
+
+            var options = {
+                ssr: true,
+                webvisor: true,
+                clickmap: true,
+                referrer: document.referrer,
+                url: window.location.href,
+                accurateTrackBounce: true,
+                trackLinks: true
+            };
+
+            if (internalTraffic) {
+                options.params = { traffic_type: 'internal_test' };
+            }
+
+            window.ym(110922170, 'init', options);
+        })();
+    </script>
+    <!-- /Yandex.Metrika counter -->
     <link rel="stylesheet" href="css/style.css">
     <script src="api/visit.php" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110922170" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <header class="hero">
         <div class="container hero-content">
             <span class="hero-badge">Офлайн-курс · 15 августа 2026</span>
@@ -302,7 +353,7 @@
                             <li>Сертификат и памятка</li>
                             <li>Кофе-брейки</li>
                         </ul>
-                        <button type="button" class="btn btn-register">Записаться</button>
+                        <button type="button" class="btn btn-register" data-tariff="basic">Записаться</button>
                     </article>
                     <article class="pricing-card featured">
                         <h3>Расширенный</h3>
@@ -312,7 +363,7 @@
                             <li>Набор перевязочных материалов</li>
                             <li>Дополнительный практический блок</li>
                         </ul>
-                        <button type="button" class="btn btn-register">Записаться</button>
+                        <button type="button" class="btn btn-register" data-tariff="extended">Записаться</button>
                     </article>
                     <article class="pricing-card">
                         <h3>Корпоративный</h3>
@@ -322,7 +373,7 @@
                             <li>Консультация для HR или руководителя</li>
                             <li>Отчёт о прохождении для работодателя</li>
                         </ul>
-                        <button type="button" class="btn btn-register">Записаться</button>
+                        <button type="button" class="btn btn-register" data-tariff="corporate">Записаться</button>
                     </article>
                 </div>
             </div>
@@ -338,19 +389,19 @@
                     <form class="form-grid" id="registration-form" action="api/submit.php" method="post">
                         <label>
                             Имя
-                            <input type="text" name="name" required autocomplete="name">
+                            <input type="text" name="name" class="ym-disable-keys" required autocomplete="name">
                         </label>
                         <label>
                             Телефон
-                            <input type="tel" name="phone" required autocomplete="tel">
+                            <input type="tel" name="phone" class="ym-disable-keys" required autocomplete="tel">
                         </label>
                         <label>
                             E-mail
-                            <input type="email" name="email" required autocomplete="email">
+                            <input type="email" name="email" class="ym-disable-keys" required autocomplete="email">
                         </label>
                         <label>
                             Цель прохождения курса
-                            <textarea name="purpose" required></textarea>
+                            <textarea name="purpose" class="ym-disable-keys" required></textarea>
                         </label>
                         <button type="submit" class="btn">Отправить заявку</button>
                     </form>
@@ -366,18 +417,5 @@
         </div>
     </footer>
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110922170', 'ym');
-
-        ym(110922170, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/110922170" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
 </body>
 </html>
