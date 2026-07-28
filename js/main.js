@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedTariff = 'direct';
     let formStarted = false;
-    let guidedFocusInProgress = false;
 
     const reachMetrikaGoal = (goal, params = {}) => {
         if (typeof window.ym === 'function') {
@@ -92,33 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (registrationSection) {
-            registrationSection.classList.remove('is-activated');
-            window.requestAnimationFrame(() => {
-                registrationSection.classList.add('is-activated');
-            });
             registrationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-
-        if (!form || window.matchMedia('(max-width: 720px)').matches) {
-            return;
-        }
-
-        const firstField = form.elements.namedItem('name');
-
-        window.setTimeout(() => {
-            const activeElement = document.activeElement;
-            const formAlreadyActive = activeElement instanceof HTMLElement && form.contains(activeElement);
-
-            if (
-                firstField instanceof HTMLInputElement
-                && firstField.value === ''
-                && !formAlreadyActive
-            ) {
-                guidedFocusInProgress = true;
-                firstField.focus({ preventScroll: true });
-                guidedFocusInProgress = false;
-            }
-        }, 650);
     };
 
     registrationButtons.forEach((button) => {
@@ -184,9 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sectionObserver.observe(section);
         });
 
-        const heroRegistrationButton = document.querySelector('[data-cta-location="hero"][data-open-registration]');
+        const heroPrimaryCta = document.querySelector('.hero-actions .btn-primary');
 
-        if (registrationSection && heroRegistrationButton && mobileStickyButton) {
+        if (registrationSection && heroPrimaryCta && mobileStickyButton) {
             const stickyVisibility = {
                 hero: true,
                 registration: false,
@@ -199,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             const stickyObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.target === heroRegistrationButton) {
+                    if (entry.target === heroPrimaryCta) {
                         stickyVisibility.hero = entry.isIntersecting;
                     }
 
@@ -211,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }, { threshold: 0.1 });
 
-            stickyObserver.observe(heroRegistrationButton);
+            stickyObserver.observe(heroPrimaryCta);
             stickyObserver.observe(registrationSection);
         }
     }
@@ -243,10 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     form.addEventListener('focusin', (event) => {
-        if (guidedFocusInProgress) {
-            return;
-        }
-
         const field = event.target instanceof HTMLElement ? event.target.getAttribute('name') : null;
         trackFormInteraction(field);
     });
@@ -254,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('input', (event) => {
         const field = event.target instanceof HTMLElement ? event.target.getAttribute('name') : null;
         trackFormInteraction(field);
-        registrationSection?.classList.remove('is-activated');
     });
 
     form.addEventListener('submit', async (event) => {

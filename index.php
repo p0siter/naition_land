@@ -69,15 +69,9 @@
                 под руководством практикующих инструкторов. Офлайн в Москве, от 4 900 ₽.
             </p>
             <div class="hero-actions">
-                <button
-                    type="button"
-                    class="btn btn-primary btn-register"
-                    data-open-registration
-                    data-tariff="direct"
-                    data-cta-location="hero"
-                >
+                <a class="btn btn-primary" href="#pricing" data-pricing-link data-cta-location="hero">
                     Записаться на 15 августа
-                </button>
+                </a>
                 <a class="btn btn-secondary" href="#pricing" data-pricing-link data-cta-location="hero">
                     Посмотреть тарифы
                 </a>
@@ -135,15 +129,9 @@
                         <strong>Готовы научиться действовать без паники?</strong>
                         <span>Оставьте заявку — подтвердим место и ответим на вопросы.</span>
                     </div>
-                    <button
-                        type="button"
-                        class="btn btn-register"
-                        data-open-registration
-                        data-tariff="direct"
-                        data-cta-location="benefits"
-                    >
+                    <a class="btn" href="#pricing" data-pricing-link data-cta-location="benefits">
                         Записаться на курс
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -214,18 +202,10 @@
                     <form class="form-grid" id="registration-form" action="api/submit.php" method="post">
                         <input type="hidden" name="bot_session_id" value="">
                         <input type="hidden" name="tariff" id="selected-tariff" value="direct">
-                        <div class="form-start-prompt" id="form-start-prompt">
-                            <span>Шаг 1</span>
-                            <div>
-                                <strong>Начните с имени</strong>
-                                <small>Все четыре поля обычно занимают меньше минуты.</small>
-                            </div>
-                        </div>
                         <div class="contact-fields">
                             <label>
                                 Имя
                                 <input
-                                    id="lead-name"
                                     type="text"
                                     name="name"
                                     class="ym-disable-keys"
@@ -361,7 +341,7 @@
                     </div>
                     <button
                         type="button"
-                        class="btn"
+                        class="btn btn-register"
                         data-open-registration
                         data-tariff="direct"
                         data-cta-location="program"
