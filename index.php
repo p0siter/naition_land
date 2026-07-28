@@ -71,7 +71,7 @@
             <div class="hero-actions">
                 <button
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-primary btn-register"
                     data-open-registration
                     data-tariff="direct"
                     data-cta-location="hero"
@@ -137,7 +137,7 @@
                     </div>
                     <button
                         type="button"
-                        class="btn"
+                        class="btn btn-register"
                         data-open-registration
                         data-tariff="direct"
                         data-cta-location="benefits"
@@ -164,7 +164,7 @@
                             <li>Сертификат и памятка</li>
                             <li>Кофе-брейки</li>
                         </ul>
-                        <button type="button" class="btn btn-register" data-tariff="basic">Выбрать Базовый</button>
+                        <button type="button" class="btn btn-register" data-tariff="basic" data-cta-location="pricing">Выбрать Базовый</button>
                     </article>
                     <article class="pricing-card featured">
                         <span class="pricing-badge">Больше практики</span>
@@ -176,7 +176,7 @@
                             <li>Набор перевязочных материалов</li>
                             <li>Дополнительный практический блок</li>
                         </ul>
-                        <button type="button" class="btn btn-register" data-tariff="extended">Выбрать Расширенный</button>
+                        <button type="button" class="btn btn-register" data-tariff="extended" data-cta-location="pricing">Выбрать Расширенный</button>
                     </article>
                     <article class="pricing-card">
                         <h3>Корпоративный</h3>
@@ -187,7 +187,7 @@
                             <li>Консультация для HR или руководителя</li>
                             <li>Отчёт о прохождении для работодателя</li>
                         </ul>
-                        <button type="button" class="btn btn-register" data-tariff="corporate">Обсудить обучение</button>
+                        <button type="button" class="btn btn-register" data-tariff="corporate" data-cta-location="pricing">Обсудить обучение</button>
                     </article>
                 </div>
             </div>
@@ -196,11 +196,17 @@
         <section class="section registration-section" id="registration" data-track-section="registration">
             <div class="container">
                 <div class="registration-panel">
-                    <p class="registration-kicker">Следующий курс — 15 августа</p>
-                    <h2 class="section-title">Забронировать место</h2>
+                    <p class="registration-kicker">Остался один шаг · без оплаты на сайте</p>
+                    <h2 class="section-title">Забронируйте место за 30 секунд</h2>
                     <p class="section-lead registration-lead">
-                        Оставьте контакты — мы подтвердим наличие места и ответим на вопросы.
+                        Начните с имени и телефона. Мы подтвердим наличие места, поможем с тарифом
+                        и ответим на вопросы до оплаты.
                     </p>
+                    <ul class="registration-assurances" aria-label="Условия заявки">
+                        <li>Заявка ни к чему не обязывает</li>
+                        <li>Оплата после подтверждения</li>
+                        <li>Контакты не передаём третьим лицам</li>
+                    </ul>
                     <div class="selection-summary" id="selection-summary" aria-live="polite">
                         <span>Запись без выбранного тарифа</span>
                         <strong>Поможем выбрать при звонке</strong>
@@ -208,10 +214,18 @@
                     <form class="form-grid" id="registration-form" action="api/submit.php" method="post">
                         <input type="hidden" name="bot_session_id" value="">
                         <input type="hidden" name="tariff" id="selected-tariff" value="direct">
+                        <div class="form-start-prompt" id="form-start-prompt">
+                            <span>Шаг 1</span>
+                            <div>
+                                <strong>Начните с имени</strong>
+                                <small>Все четыре поля обычно занимают меньше минуты.</small>
+                            </div>
+                        </div>
                         <div class="contact-fields">
                             <label>
                                 Имя
                                 <input
+                                    id="lead-name"
                                     type="text"
                                     name="name"
                                     class="ym-disable-keys"
@@ -480,7 +494,7 @@
                 </div>
                 <button
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-primary btn-register"
                     data-open-registration
                     data-tariff="direct"
                     data-cta-location="final"
@@ -493,7 +507,7 @@
 
     <button
         type="button"
-        class="mobile-sticky-cta is-hidden"
+        class="mobile-sticky-cta btn-register is-hidden"
         data-open-registration
         data-tariff="direct"
         data-cta-location="mobile-sticky"

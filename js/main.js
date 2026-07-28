@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const message = document.getElementById('form-message');
     const selectionSummary = document.getElementById('selection-summary');
     const tariffInput = document.getElementById('selected-tariff');
-    const registerButtons = document.querySelectorAll('.btn-register');
-    const directRegistrationButtons = document.querySelectorAll('[data-open-registration]');
+    const registrationButtons = document.querySelectorAll('.btn-register, [data-open-registration]');
     const pricingLinks = document.querySelectorAll('[data-pricing-link]');
     const purposeChips = document.querySelectorAll('.purpose-chip');
     const mobileStickyButton = document.querySelector('.mobile-sticky-cta');
@@ -36,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedTariff = 'direct';
     let formStarted = false;
+    let guidedFocusInProgress = false;
 
     const reachMetrikaGoal = (goal, params = {}) => {
         if (typeof window.ym === 'function') {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        registerButtons.forEach((button) => {
+        registrationButtons.forEach((button) => {
             const card = button.closest('.pricing-card');
 
             if (card) {
@@ -92,17 +92,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (registrationSection) {
+            registrationSection.classList.remove('is-activated');
+            window.requestAnimationFrame(() => {
+                registrationSection.classList.add('is-activated');
+            });
             registrationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        if (!form || window.matchMedia('(max-width: 720px)').matches) {
+            return;
+        }
+
+        const firstField = form.elements.namedItem('name');
+
+        window.setTimeout(() => {
+            const activeElement = document.activeElement;
+            const formAlreadyActive = activeElement instanceof HTMLElement && form.contains(activeElement);
+
+            if (
+                firstField instanceof HTMLInputElement
+                && firstField.value === ''
+                && !formAlreadyActive
+            ) {
+                guidedFocusInProgress = true;
+                firstField.focus({ preventScroll: true });
+                guidedFocusInProgress = false;
+            }
+        }, 650);
     };
 
-    registerButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            openRegistration(button);
-        });
-    });
-
-    directRegistrationButtons.forEach((button) => {
+    registrationButtons.forEach((button) => {
         button.addEventListener('click', () => {
             openRegistration(button);
         });
@@ -137,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.toggle('is-selected', item === chip);
             });
 
+            trackFormInteraction('purpose');
             reachMetrikaGoal('ym-purpose-choice', {
                 choice: chip.textContent.trim(),
                 tariff: selectedTariff,
@@ -200,9 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    form.addEventListener('focusin', (event) => {
-        const field = event.target instanceof HTMLElement ? event.target.getAttribute('name') : null;
-
+    const trackFormInteraction = (field) => {
         if (!formStarted) {
             formStarted = true;
             reachMetrikaGoal('ym-form-start', { tariff: selectedTariff });
@@ -217,6 +235,26 @@ document.addEventListener('DOMContentLoaded', () => {
             field,
             tariff: selectedTariff,
         });
+    };
+
+    form.addEventListener('click', (event) => {
+        const field = event.target instanceof HTMLElement ? event.target.getAttribute('name') : null;
+        trackFormInteraction(field);
+    });
+
+    form.addEventListener('focusin', (event) => {
+        if (guidedFocusInProgress) {
+            return;
+        }
+
+        const field = event.target instanceof HTMLElement ? event.target.getAttribute('name') : null;
+        trackFormInteraction(field);
+    });
+
+    form.addEventListener('input', (event) => {
+        const field = event.target instanceof HTMLElement ? event.target.getAttribute('name') : null;
+        trackFormInteraction(field);
+        registrationSection?.classList.remove('is-activated');
     });
 
     form.addEventListener('submit', async (event) => {

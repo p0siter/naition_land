@@ -470,7 +470,7 @@ img {
     transform: none;
 }
 
-.btn-register {
+.pricing-card .btn-register {
     width: 100%;
 }
 
@@ -479,12 +479,19 @@ img {
 }
 
 .registration-panel {
+    position: relative;
     max-width: 760px;
     margin: 0 auto;
     background: var(--white);
     border-radius: 24px;
     padding: 36px;
+    border: 1px solid transparent;
     box-shadow: var(--shadow);
+}
+
+.registration-section.is-activated .registration-panel {
+    border-color: rgba(217, 79, 79, 0.36);
+    animation: registration-pulse 1.4s ease-out;
 }
 
 .registration-kicker {
@@ -497,7 +504,25 @@ img {
 }
 
 .registration-lead {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+}
+
+.registration-assurances {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+    color: #5f6466;
+    font-size: 0.9rem;
+}
+
+.registration-assurances li::before {
+    content: "✓";
+    margin-right: 6px;
+    color: #2e7d32;
+    font-weight: 800;
 }
 
 .selection-summary {
@@ -519,6 +544,38 @@ img {
 .form-grid {
     display: grid;
     gap: 18px;
+}
+
+.form-start-prompt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #fff7f3;
+    color: var(--heading);
+}
+
+.form-start-prompt > span {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.form-start-prompt strong,
+.form-start-prompt small {
+    display: block;
+}
+
+.form-start-prompt small {
+    margin-top: 2px;
+    color: #6c757d;
 }
 
 .contact-fields {
@@ -558,6 +615,11 @@ img {
 .form-grid textarea:focus {
     border-color: var(--accent);
     outline: 3px solid rgba(217, 79, 79, 0.12);
+}
+
+.registration-section.is-activated .form-grid input[name="name"] {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 5px rgba(217, 79, 79, 0.1);
 }
 
 .field-hint {
@@ -658,6 +720,21 @@ img {
     font-size: 0.95rem;
 }
 
+@keyframes registration-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(217, 79, 79, 0.24), var(--shadow);
+    }
+    100% {
+        box-shadow: 0 0 0 18px rgba(217, 79, 79, 0), var(--shadow);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .registration-section.is-activated .registration-panel {
+        animation: none;
+    }
+}
+
 @media (max-width: 720px) {
     .section {
         padding: 56px 0;
@@ -679,6 +756,11 @@ img {
     .selection-summary {
         align-items: stretch;
         flex-direction: column;
+    }
+
+    .registration-assurances {
+        display: grid;
+        gap: 6px;
     }
 
     .hero-actions .btn,
