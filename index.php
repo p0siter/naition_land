@@ -69,7 +69,7 @@
                 под руководством практикующих инструкторов. Офлайн в Москве, от 4 900 ₽.
             </p>
             <div class="hero-actions">
-                <a class="btn btn-primary" href="#pricing" data-pricing-link data-cta-location="hero">
+                <a class="btn btn-primary" href="#registration" data-cta-location="hero">
                     Записаться на 15 августа
                 </a>
                 <a class="btn btn-secondary" href="#pricing" data-pricing-link data-cta-location="hero">
