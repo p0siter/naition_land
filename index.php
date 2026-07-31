@@ -69,7 +69,7 @@
                 под руководством практикующих инструкторов. Офлайн в Москве, от 4 900 ₽.
             </p>
             <div class="hero-actions">
-                <a class="btn btn-primary" href="#registration" data-cta-location="hero">
+                <a class="btn btn-primary" href="#registration-form" data-cta-location="hero">
                     Записаться на 15 августа
                 </a>
                 <a class="btn btn-secondary" href="#pricing" data-pricing-link data-cta-location="hero">
@@ -99,43 +99,6 @@
     </header>
 
     <main>
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">О курсе</h2>
-                <p class="section-lead">
-                    Это не лекция «для галочки», а полноценный практический день, где каждый блок
-                    заканчивается отработкой навыков под контролем инструктора.
-                </p>
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <h3>8 часов практики</h3>
-                        <p>Больше половины времени посвящено тренировкам на манекенах, имитации травм и работе в парах.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3>Формат offline</h3>
-                        <p>Живое общение, мгновенная обратная связь и возможность задать вопросы по вашим реальным ситуациям.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3>Сертификат</h3>
-                        <p>После курса вы получите именной сертификат и чек-лист действий для дома, работы и поездок.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3>Малые группы</h3>
-                        <p>До 14 человек в группе, чтобы каждый успел отработать все ключевые навыки несколько раз.</p>
-                    </article>
-                </div>
-                <div class="inline-cta">
-                    <div>
-                        <strong>Готовы научиться действовать без паники?</strong>
-                        <span>Оставьте заявку — подтвердим место и ответим на вопросы.</span>
-                    </div>
-                    <a class="btn" href="#pricing" data-pricing-link data-cta-location="benefits">
-                        Записаться на курс
-                    </a>
-                </div>
-            </div>
-        </section>
-
         <section class="section pricing-section" id="pricing" data-track-section="pricing">
             <div class="container">
                 <h2 class="section-title">Выберите формат участия</h2>
@@ -260,6 +223,43 @@
                         <li>Контакты не передаём третьим лицам</li>
                     </ul>
                     <p class="form-message" id="form-message" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">О курсе</h2>
+                <p class="section-lead">
+                    Это не лекция «для галочки», а полноценный практический день, где каждый блок
+                    заканчивается отработкой навыков под контролем инструктора.
+                </p>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <h3>8 часов практики</h3>
+                        <p>Больше половины времени посвящено тренировкам на манекенах, имитации травм и работе в парах.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Формат offline</h3>
+                        <p>Живое общение, мгновенная обратная связь и возможность задать вопросы по вашим реальным ситуациям.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Сертификат</h3>
+                        <p>После курса вы получите именной сертификат и чек-лист действий для дома, работы и поездок.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Малые группы</h3>
+                        <p>До 14 человек в группе, чтобы каждый успел отработать все ключевые навыки несколько раз.</p>
+                    </article>
+                </div>
+                <div class="inline-cta">
+                    <div>
+                        <strong>Готовы научиться действовать без паники?</strong>
+                        <span>Оставьте заявку — подтвердим место и ответим на вопросы.</span>
+                    </div>
+                    <a class="btn" href="#pricing" data-pricing-link data-cta-location="benefits">
+                        Записаться на курс
+                    </a>
                 </div>
             </div>
         </section>
@@ -418,6 +418,9 @@
                         какие данные важно сохранить для дальнейшего разбирательства или страхового случая.
                     </p>
                 </div>
+                <p class="content-cta-row">
+                    <a class="btn" href="#registration-form">Перейти к записи</a>
+                </p>
             </div>
         </section>
 
