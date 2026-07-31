@@ -398,6 +398,16 @@ img {
     font-weight: 700;
 }
 
+.pricing-badge-muted {
+    background: #eef7fb;
+    color: var(--heading);
+    border: 1px solid #cfe3ee;
+}
+
+#registration-form {
+    scroll-margin-top: 160px;
+}
+
 .tariff-for {
     min-height: 48px;
     margin: -10px 0 0;
@@ -513,8 +523,9 @@ img {
 .registration-assurances {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 8px 18px;
-    margin: 0 0 24px;
+    margin: 20px 0 0;
     padding: 0;
     list-style: none;
     color: #5f6466;

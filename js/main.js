@@ -90,8 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
             location,
         });
 
-        if (registrationSection) {
-            registrationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const parkTarget = form || registrationSection;
+
+        if (parkTarget) {
+            parkTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 

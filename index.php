@@ -143,7 +143,8 @@
                     Во все тарифы входят полный день обучения, сертификат и памятка по алгоритмам первой помощи.
                 </p>
                 <div class="pricing-grid">
-                    <article class="pricing-card">
+                    <article class="pricing-card featured">
+                        <span class="pricing-badge">Рекомендуем</span>
                         <h3>Базовый</h3>
                         <p class="tariff-for">Чтобы освоить ключевые навыки</p>
                         <div class="price">4 900 ₽</div>
@@ -154,8 +155,8 @@
                         </ul>
                         <button type="button" class="btn btn-register" data-tariff="basic" data-cta-location="pricing">Выбрать Базовый</button>
                     </article>
-                    <article class="pricing-card featured">
-                        <span class="pricing-badge">Больше практики</span>
+                    <article class="pricing-card">
+                        <span class="pricing-badge pricing-badge-muted">Больше практики</span>
                         <h3>Расширенный</h3>
                         <p class="tariff-for">Чтобы увереннее закрепить навыки</p>
                         <div class="price">7 900 ₽</div>
@@ -190,11 +191,6 @@
                         Начните с имени и телефона. Мы подтвердим наличие места, поможем с тарифом
                         и ответим на вопросы до оплаты.
                     </p>
-                    <ul class="registration-assurances" aria-label="Условия заявки">
-                        <li>Заявка ни к чему не обязывает</li>
-                        <li>Оплата после подтверждения</li>
-                        <li>Контакты не передаём третьим лицам</li>
-                    </ul>
                     <div class="selection-summary" id="selection-summary" aria-live="polite">
                         <span>Запись без выбранного тарифа</span>
                         <strong>Поможем выбрать при звонке</strong>
@@ -258,6 +254,11 @@
                         <button type="submit" class="btn submit-button">Отправить заявку</button>
                         <p class="form-assurance">Контакты нужны только для подтверждения записи на курс.</p>
                     </form>
+                    <ul class="registration-assurances" aria-label="Условия заявки">
+                        <li>Заявка ни к чему не обязывает</li>
+                        <li>Оплата после подтверждения</li>
+                        <li>Контакты не передаём третьим лицам</li>
+                    </ul>
                     <p class="form-message" id="form-message" aria-live="polite"></p>
                 </div>
             </div>
